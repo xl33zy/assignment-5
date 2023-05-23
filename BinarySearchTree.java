@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<BinarySearchTree.Node> {
     private Node root;
     private int size;
+    private int height;
 
     public class Node {
         public K key;
@@ -108,6 +109,19 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements Iterable<Bi
     //returns size
     public int size() {
         return size;
+    }
+
+    int height() {
+        height = 0;
+        return height(root);
+    }
+
+    int height(Node node) {
+        if (node == null) {
+            return height;
+        }
+        height += 1;
+        return height(node.left);
     }
 
     //creates an iterator to traverse a binary search tree in-order
